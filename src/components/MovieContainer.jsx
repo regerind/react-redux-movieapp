@@ -1,48 +1,42 @@
 import React from "react";
 
-const MovieContainer = ({ title, year, rating, duration, poster }) => {
+const MovieContainer = ({ movies }) => {
   return (
-    <div style={styles.card}>
-      <img src={poster} alt={title} style={styles.poster} />
-      <h3>{title}</h3>
-      <p>
-        <strong>Yıl:</strong> {year}
-      </p>
-      <p>
-        <strong>Puan:</strong> {rating}
-      </p>
-      <p>
-        <strong>Süre:</strong> {duration}
-      </p>
+    <div className="movie-list">
+      {movies.map((movie) => (
+        <div className="card mb-2" key={movie.Title}>
+          <div
+            className="card flex-fill"
+            style={{
+              transition: "transform 0.3s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.05)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <img
+              src={movie.Poster}
+              alt={movie.Title}
+              className="card-img-top"
+            />
+            <div className="card-body">
+              <h5 className="card-title">{movie.Title}</h5>
+              <p className="card-text">
+                <strong>Yıl:</strong> {movie.Year}
+              </p>
+              <p className="card-text">
+                <strong>Puan:</strong> {movie.Rating}
+              </p>
+              <p className="card-text">
+                <strong>Süre:</strong> {movie.Duration}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
-};
-
-const styles = {
-  card: {
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    padding: "15px",
-    textAlign: "center",
-    backgroundColor: "black",
-    flex: "1 1 auto",
-    margin: "10px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  poster: {
-    height: "auto",
-    width: "100%",
-    objectFit: "cover",
-    borderRadius: "8px",
-    marginBottom: "10px",
-  },
-  title: {
-    fontSize: "1.2rem",
-    marginBottom: "10px",
-  },
 };
 
 export default MovieContainer;

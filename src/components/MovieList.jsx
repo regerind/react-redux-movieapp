@@ -11,32 +11,24 @@ const MovieList = () => {
   );
 
   return (
-    <div style={styles.list}>
-      {filteredFilms.length > 0 ? (
-        filteredFilms.map((film, index) => (
-          <MovieContainer
-            key={index}
-            title={film.Title}
-            year={film.Year}
-            rating={film.Rating}
-            duration={film.Duration}
-            poster={film.Poster}
-          />
-        ))
-      ) : (
-        <p>Aramanıza uygun film bulunamadı.</p>
-      )}
-    </div>
+    <>
+      <div className="container">
+        <div className="row mt-4">
+          <div className="col-md-12">
+            <div className="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-4">
+              {filteredFilms.length > 0 ? (
+                filteredFilms.map((film) => (
+                  <MovieContainer key={film.Id} movies={[film]} />
+                ))
+              ) : (
+                <p>Aramanıza uygun film bulunamadı.</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
-};
-
-const styles = {
-  list: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-    gap: "15px",
-    padding: "15px",
-  },
 };
 
 export default MovieList;
