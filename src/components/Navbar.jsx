@@ -30,10 +30,14 @@ const styles = {
   },
   title: {
     margin: 0,
+    fontSize: "25px",
   },
   input: {
-    padding: "5px",
+    padding: "10px",
     fontSize: "16px",
+    width: "600px",
+    marginLeft: "auto",
+    display: "block",
   },
 };
 
