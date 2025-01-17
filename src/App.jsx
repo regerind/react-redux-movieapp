@@ -1,17 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import FilmContainer from "./components/FilmContainer";
+import Navbar from "./components/Navbar";
+import MovieList from "./components/MovieList";
 
 const App = () => {
   return (
     <Provider store={store}>
-      <FilmContainer />
+      <Navbar />
+      <MovieList />
     </Provider>
   );
 };
 
-export default App;
+import { createRoot } from "react-dom/client";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
+
+export default App;
